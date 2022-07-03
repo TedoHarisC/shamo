@@ -100,4 +100,12 @@ class UserController extends Controller
             ], 'Athentication Failed', 500);
         }
     }
+
+    public function fetch(Request $request)
+    {
+        //Mengambil data user (Ajaib sekali ga ada function ambil data)
+        //Data sudah diambil dari bagian login atau register (Dari Token) -> jadi untuk bagian pengambilan data
+        //Jadi untuk ambil data user tinggal begini saja dengan memasukan authorization token setelah login atau register
+        return CustomResponseFormatter::success($request->user(), 'Data profile user berhasil diambil');
+    }
 }
