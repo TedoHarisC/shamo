@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\API;
+namespace App\Helpers;
 
 class CustomResponseFormatter
 {
