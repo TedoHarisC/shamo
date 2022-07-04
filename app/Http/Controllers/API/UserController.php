@@ -108,4 +108,22 @@ class UserController extends Controller
         //Jadi untuk ambil data user tinggal begini saja dengan memasukan authorization token setelah login atau register
         return CustomResponseFormatter::success($request->user(), 'Data profile user berhasil diambil');
     }
+
+    public function updateProfile(Request $request) 
+    {
+        $data = $request->all();
+
+        $user = Auth::user();
+        $user->update($data);
+
+        return CustomResponseFormatter::success($user, 'Profile updated');
+    }
+
+    public function logout(Request $request)
+    {
+        //digunakan untuk hapus token yang sedang digunakan untuk login 
+        $token = $request->user()->currentAccessToken()->delete();
+
+        return CustomResponseFormatter::success($token, 'Token Revoked');
+    }
 }
